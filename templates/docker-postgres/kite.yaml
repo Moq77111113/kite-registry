@@ -1,0 +1,9 @@
+name: docker-postgres
+description: PostgreSQL database with Docker Compose, persistence, and health checks
+version: 1.2.0
+author: Kite Team
+tags:
+  - docker
+  - database
+  - postgresql
+  - docker-compose
