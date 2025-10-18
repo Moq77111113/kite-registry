@@ -1,9 +1,0 @@
-name: github-actions-deploy
-description: GitHub Actions workflow for deploying Node.js apps to production
-version: 1.0.0
-author: Kite Team
-tags:
-  - github-actions
-  - ci-cd
-  - deployment
-  - nodejs

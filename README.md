@@ -1,215 +1,166 @@
-# Kite Template Registry
+# 🪁 Kite Example Registry
 
-Demo template registry for [Kite](https://github.com/moq77111113/kite) - the infrastructure template manager.
+**Because someone had to start forking first.**
 
-## What is Kite?
+> [!NOTE]
+> This is the _official_ example registry for [Kite](https://github.com/Moq77111113/kite).
+> Aka: a bunch of scripts pretending to be a product.
 
-Kite is a simple CLI tool for managing infrastructure templates. Think of it as a flat file manager for DevOps - pull ready-to-use scripts, configs, and automation files into your project.
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![Kite](https://img.shields.io/badge/works%20with-Kite-blueviolet.svg)](https://github.com/Moq77111113/kite)
 
-## Quick Start
+---
+
+## What is this?
+
+A **public registry** of example _kits_ for [Kite](https://github.com/Moq77111113/kite) —
+so you can test the tool without stealing Steve’s private repo.
+
+It’s not a marketplace. It’s not an API.
+It's literally a Git repo full of folders", the infrastructure knowledge generated over years of copy-pasting.
+
+## Why this matters
+
+Every developer spends hours searching for, copy-pasting, and debugging infrastructure code. Kite registries turn tribal knowledge into reusable, production-ready kits. If every developer saves just 2 hours a week, that’s over **100 hours/year** per person—time you can spend building, not yak-shaving.
+
+Multiply that by your team size. That’s why this matters.
+
+## Try it
+
+If you already have Kite installed:
 
 ```bash
-# Initialize Kite in your project
-kite init --registry /path/to/kite-registry
+kite init --registry https://github.com/Moq77111113/kite-example-registry.git
+kite serve
+```
 
-# List available templates
+Or just grab something:
+
+```bash
+kite add docker-postgres hello-world-script
+```
+
+Boom — real files appear in your project. No magic. No lock-in. Just code.
+
+---
+
+## What’s inside?
+
+A few **starter kits** to show how registries are structured:
+
+```
+kite-example-registry/
+├── docker-postgres/
+│   ├── kite.yaml
+│   └── docker-compose.yml
+├── hello-world-script/
+│   ├── kite.yaml
+│   └── hello.sh
+└── steve-s-notes/
+    ├── kite.yaml
+    └── my-secret-notes.txt
+    └── email-to-sarah.eml
+
+```
+
+Each folder = one **kit**.
+Each kit = some files + one mandatory `kite.yaml`.
+
+---
+
+## Example: `docker-postgres`
+
+```yaml
+name: docker-postgres
+version: 1.0.0
+description: PostgreSQL with Docker Compose (because someone had to write it again)
+tags: [docker, database, postgres]
+```
+
+You get a real, working `docker-compose.yml` you can actually edit, break, and ship.
+Kite won’t stop you — that’s the point.
+
+---
+
+## Rules (sort of)
+
+1. **No dependencies.** Just files.
+2. **No build step.** Because nobody reads Makefiles anyway.
+3. **No opinions (except this one).**
+4. **No shame in copying.** Copying _is_ collaboration.
+
+---
+
+## How to use it with Kite
+
+```bash
+# Point Kite to this registry
+kite init --registry https://github.com/Moq77111113/kite-registry.git
+
+# Browse in the web UI
+kite serve
+
+# Or just list what's available
 kite list
 
-# Add templates to your project
-kite add bash-backup-script
-kite add github-actions-deploy
-
-# Check for updates
-kite update
+# Then fork something useful
+kite add steve-s-notes
 ```
 
-## Available Templates
-
-### 📜 bash-backup-script
-Simple bash script for backing up files and databases with rotation.
-
-**What you get:**
-- `backup.sh` - Main backup script
-- `backup.conf.example` - Configuration template
-- Automatic old backup cleanup
-- Optional S3 upload support
-
-**Perfect for:** Quick and simple server backups without complex tools.
-
-**Tags:** `bash`, `backup`, `scripts`, `automation`
+You’ll find your new files under the current directory.
+They’re yours. Destroy them responsibly.
 
 ---
 
-### 🚀 github-actions-deploy
-GitHub Actions workflow for deploying Node.js apps via SSH.
+## Why this repo exists
 
-**What you get:**
-- `.github/workflows/deploy.yml` - Complete CI/CD pipeline
-- Test → Lint → Build → Deploy workflow
-- Environment protection
-- SSH deployment setup
+Because every demo needs fake content.
+And because you shouldn’t have to create your own registry just to test Kite.
 
-**Perfect for:** Deploying Node.js apps to a VPS/server without complex CI/CD platforms.
+Think of this repo as:
 
-**Tags:** `github-actions`, `ci-cd`, `deployment`, `nodejs`
+- **a sandbox** (safe to break),
+- **a template** (safe to fork),
+- and **a meme** (safe to ignore).
 
 ---
 
-### ⚙️ ansible-docker-setup
-Ansible playbook for installing Docker on Ubuntu/Debian servers.
+## Want to add your own kits?
 
-**What you get:**
-- `playbook.yml` - Docker installation playbook
-- `inventory.ini` - Server inventory template
-- `ansible.cfg` - Ansible configuration
-- Docker + Docker Compose setup
-- User group configuration
+PRs welcome.
 
-**Perfect for:** Setting up Docker across multiple servers with one command.
+If you think your setup deserves to live here, add a folder with:
 
-**Tags:** `ansible`, `docker`, `automation`, `infrastructure`
+- A `kite.yaml` (metadata)
+- Whatever files make your kit useful
+- A README if you feel guilty
 
----
-
-### 🐳 docker-postgres
-PostgreSQL database with Docker Compose.
-
-**What you get:**
-- `docker-compose.yml` - PostgreSQL service definition
-- `.env.example` - Environment variables template
-- `init-scripts/` - Database initialization scripts
-- Health checks and persistence
-
-**Perfect for:** Quick PostgreSQL setup for development or production.
-
-**Tags:** `docker`, `database`, `postgresql`, `docker-compose`
-
----
-
-### 🔄 gitlab-ci-node
-GitLab CI/CD pipeline for Node.js projects.
-
-**What you get:**
-- `.gitlab-ci.yml` - Complete pipeline
-- Multi-stage: install → lint → test → build → deploy
-- Coverage reporting
-- Staging and production environments
-
-**Perfect for:** Node.js projects using GitLab CI.
-
-**Tags:** `gitlab`, `ci-cd`, `nodejs`, `testing`, `deployment`
-
----
-
-### ☁️ terraform-aws-s3
-Production-ready AWS S3 bucket with Terraform.
-
-**What you get:**
-- `main.tf` - S3 bucket resource
-- `variables.tf` - Configurable variables
-- `outputs.tf` - Output values
-- Versioning, encryption, lifecycle policies
-
-**Perfect for:** Creating secure S3 buckets quickly.
-
-**Tags:** `terraform`, `aws`, `storage`, `s3`
-
----
-
-## Template Structure
-
-Each template is just a directory with files:
-
-```
-template-name/
-├── kite.yaml          # Metadata (name, version, description, tags)
-├── README.md          # Documentation
-└── [your files]       # Scripts, configs, whatever
-```
-
-That's it. No complex package formats. Just files.
-
-## Usage
-
-### With Local Registry
+Then run:
 
 ```bash
-# Clone this registry
-git clone https://github.com/YOUR_USERNAME/kite-registry
-
-# Initialize Kite with local path
-cd your-project
-kite init --registry /path/to/kite-registry
-
-# Add templates
-kite add bash-backup-script
+git add .
+git commit -m "add(my-awesome-kit): because someone will need this again"
 ```
 
-Files are copied to your project:
-```
-your-project/
-├── kite.json
-└── infrastructure/
-    └── bash-backup-script/
-        ├── backup.sh
-        ├── backup.conf.example
-        └── README.md
-```
-
-### With Git URL
-
-```bash
-# Use GitHub URL directly
-kite init --registry https://github.com/YOUR_USERNAME/kite-registry
-
-# Kite clones to ~/.kite/cache/registry/
-# Then copies files to your project
-```
-
-## Why These Templates?
-
-These are intentionally simple, practical templates that small teams actually use:
-
-- **bash-backup-script** - Because not everyone needs Veeam
-- **github-actions-deploy** - Because SSH deployments are simple and work
-- **ansible-docker-setup** - Because installing Docker manually on 10 servers sucks
-- **docker-postgres** - Because `docker-compose up` beats manual installation
-- **gitlab-ci-node** - Because most teams use GitLab
-- **terraform-aws-s3** - Because S3 is everywhere
-
-No over-engineered Kubernetes manifests. No 500-line Terraform modules. Just useful stuff.
-
-## Contributing
-
-Want to add a template?
-
-1. Fork this repo
-2. Create `templates/your-template-name/`
-3. Add `kite.yaml`, your files, and `README.md`
-4. Submit a PR
-
-**Template guidelines:**
-- Keep it simple - if it needs a 10-page README, it's too complex
-- Make it practical - solve real problems
-- Document it - add a clear README with examples
-- Test it - make sure it actually works
-
-## What Kite Is NOT
-
-- ❌ Not a package manager (no dependency resolution)
-- ❌ Not a configuration management tool (no templating engine)
-- ❌ Not a deployment platform (just copies files)
-
-## What Kite IS
-
-- ✅ A flat file manager for infrastructure code
-- ✅ A way to share scripts and configs across projects
-- ✅ A simple tool for simple tasks
+---
 
 ## License
 
-MIT - Use these templates however you want.
+MIT — copy it, fork it, or print it out and frame it.
 
 ---
 
-**Keep it simple. Keep it practical.**
+## Credits
+
+**Kite** — for admitting that copy-paste is how infrastructure _actually_ spreads.
+**You** — for reading this far.
+**Steve** — for the original `docker-compose` that started it all.
+
+---
+
+> _It’s not a registry. It’s organized chaos pretending to be documentation._
+
+```bash
+kite init --registry https://github.com/Moq77111113/kite-registry.git
+```

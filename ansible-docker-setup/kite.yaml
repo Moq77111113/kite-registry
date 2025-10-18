@@ -1,9 +1,0 @@
-name: ansible-docker-setup
-description: Ansible playbook for installing and configuring Docker on Ubuntu/Debian servers
-version: 1.0.0
-author: Kite Team
-tags:
-  - ansible
-  - docker
-  - automation
-  - infrastructure

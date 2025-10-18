@@ -1,9 +1,0 @@
-name: bash-backup-script
-description: Simple bash script for backing up files and databases with rotation
-version: 1.0.0
-author: Kite Team
-tags:
-  - bash
-  - backup
-  - scripts
-  - automation

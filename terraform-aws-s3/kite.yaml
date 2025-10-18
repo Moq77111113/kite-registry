@@ -1,9 +1,0 @@
-name: terraform-aws-s3
-description: Production-ready S3 bucket with versioning, encryption, and lifecycle policies
-version: 1.0.0
-author: Kite Team
-tags:
-  - terraform
-  - aws
-  - storage
-  - s3
