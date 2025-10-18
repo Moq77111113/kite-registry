@@ -153,9 +153,9 @@ MIT — copy it, fork it, or print it out and frame it.
 
 ## Credits
 
-**Kite** — for admitting that copy-paste is how infrastructure _actually_ spreads.
-**You** — for reading this far.
-**Steve** — for the original `docker-compose` that started it all.
+- **Kite** — for admitting that copy-paste is how infrastructure _actually_ spreads.
+- **You** — for reading this far.
+- **Steve** — for the original `docker-compose` that started it all.
 
 ---
 
