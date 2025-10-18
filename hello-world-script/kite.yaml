@@ -1,3 +1,8 @@
 name: hello-world-script
 version: 1.0.0
 description: Hello World shell script example for Kite
+author: Moq77111113
+tags:
+  - hello world
+  - script
+  - example
